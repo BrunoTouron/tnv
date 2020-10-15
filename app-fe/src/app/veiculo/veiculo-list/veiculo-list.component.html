@@ -1,0 +1,18 @@
+<span class="page-titles">Lista de Veiculos</span>
+<crm-default-list [fieldsList]="['Veiculo','Marca','Ano','Descricao']" 
+  [labelsList]="['Veiculo','Marca','Ano','Descrição']" 
+  [masksList]="['','','','']"
+  route="veiculos" apiRoute="veiculos" [values]="values" [hasFilter]="true" title="veiculos">
+  <div class="row">
+    <div class="form-group col-lg-4">
+      <label for="filterVeiculo">Veiculo</label>
+      <input type="text" name="Veiculo" id="Veiculo" [(ngModel)]="filters.Veiculo" class="form-control" upperCase>
+    </div>
+    <div class="col-lg-1">
+      <label>&nbsp;</label>
+      <br />
+      <button (click)="applyFilter()" class="btn btn-info">Pesquisar</button>
+    </div>
+  </div>
+  
+</crm-default-list>

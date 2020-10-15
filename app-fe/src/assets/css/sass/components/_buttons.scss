@@ -1,0 +1,73 @@
+.button {
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    text-transform: uppercase;
+    color: #4285f4;
+    border: 2px solid transparent;
+    border-radius: 6px;
+    padding: 6px 6px;
+    display: inline-block;
+    min-width: 80px;
+    cursor: pointer;
+    background-color: #FFF;
+    border-color: #d7d7d7;
+    
+    // COLORS
+    &-green {
+        color: #fff;
+        background-color: #42AE5D;
+        border-color: #42AE5D;
+        
+        &-hover:hover {
+            background-color: $green-layoutsistema;
+            border-color: $green-layoutsistema;
+            transition: .2s;
+        }
+    }
+    
+    &-red{
+        color: #fff;
+        background-color: #FA5858;
+    }
+    
+    &-yellow{
+        color: #585858;
+        background-color: #F4FA58;
+    }
+    
+    
+    // TYPES
+    &-modal {
+        margin: 0 14px;
+    }
+    
+    &-block {
+        display: block;
+    }
+    
+    // SIZES
+    &-medium {
+        font-size: 16px;
+        padding: 8px 10px;
+    }
+    
+    &-large {
+        font-size: 20px;
+        padding: 8px 12px;
+    }
+    
+    &-small{
+        font-size: 12px;
+        padding: 5px 5px;
+    }
+    
+    &-table-actions{
+        height: 40px;
+        width: 40px;
+        border-radius: 1cm;
+        border: 0;
+        cursor: pointer;
+        margin: 0 10px;
+    }
+}

@@ -1,0 +1,31 @@
+.page-titles {
+    font-size: 32px;
+    position: absolute;
+    left: 6.5cm;
+    top: 1.5cm;
+}
+
+.form-novo-usuario {
+    width: 80%;
+}
+
+.user-preview {
+    
+    &-title {
+        font-weight: 700;
+    }
+    
+    button {
+        width: 30%;
+    }
+}
+
+.my-pagination /deep/ .ngx-pagination .current {
+    background: $green-layoutsistema;
+    
+    -moz-background: $green-layoutsistema;
+}
+
+.ngx-pagination .current {
+    background: $green-layoutsistema;
+}

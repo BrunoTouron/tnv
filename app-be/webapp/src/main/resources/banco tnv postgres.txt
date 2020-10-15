@@ -1,0 +1,55 @@
+-- Database: tnv
+
+-- DROP DATABASE tnv;
+
+CREATE DATABASE tnv
+    WITH 
+    OWNER = postgres
+    ENCODING = 'UTF8'
+    LC_COLLATE = 'Portuguese_Brazil.1252'
+    LC_CTYPE = 'Portuguese_Brazil.1252'
+    TABLESPACE = pg_default
+    CONNECTION LIMIT = -1;
+
+-----------------------------------------------------------
+
+
+-- SEQUENCE: public."Veiculos_Id_seq"
+
+-- DROP SEQUENCE public."Veiculos_Id_seq";
+
+CREATE SEQUENCE public."Veiculos_Id_seq"
+    INCREMENT 1
+    START 1
+    MINVALUE 1
+    MAXVALUE 2147483647
+    CACHE 1;
+
+ALTER SEQUENCE public."Veiculos_Id_seq"
+    OWNER TO postgres;
+	
+	
+-----------------------------------------------------------
+	
+	
+-- Table: public."Veiculos"
+
+-- DROP TABLE public."Veiculos";
+
+CREATE TABLE public."Veiculos"
+(
+    "Id" integer NOT NULL DEFAULT nextval('"Veiculos_Id_seq"'::regclass),
+    "Veiculo" character varying(100) COLLATE pg_catalog."default" NOT NULL,
+    "Marca" character varying(100) COLLATE pg_catalog."default" NOT NULL,
+    "Ano" integer NOT NULL,
+    "Descricao" character varying(100) COLLATE pg_catalog."default" NOT NULL,
+	"Vendido" boolean NOT NULL DEFAULT false,
+	"Created" timestamp without time zone,
+	"Updated" timestamp without time zone,
+    CONSTRAINT "PK_Veiculos" PRIMARY KEY ("Id")
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE public."Veiculos"
+    OWNER to postgres;

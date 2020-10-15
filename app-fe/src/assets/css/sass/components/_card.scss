@@ -1,0 +1,36 @@
+.card {
+    background: #fff;
+    width: 80%;
+    position: absolute;
+    right: 0;
+    margin-right: .9cm;
+    margin-top: 3cm;
+    padding: 24px;
+
+    @include mq ('desktop') {
+        width: 75%;
+    }
+
+    @include mq ('tablet') {
+        width: 90%;
+    }
+
+    .btn-new {
+        width: 3cm;
+        margin: 7px;
+    }
+
+    &-search {
+        display: flex;
+        align-items: center;
+    }
+
+    &-input {
+        width: 50%;
+        margin-right: 1cm;
+    }
+
+    label {
+        margin-right: .3cm;
+    }
+}

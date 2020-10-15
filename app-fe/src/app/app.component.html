@@ -1,0 +1,58 @@
+<span>
+    <!--<div *ngIf="usuario?.nome.length > 0 && usuario?.nome != 'null'">-->
+    <div>    
+    <header class="top-header">
+        <div>
+            <a routerLink="home">
+                <span class="top-header-title">TNV Veiculos</span>
+            </a>
+        </div>
+        
+        <div class="top-header-actions">            
+            <a (click)="logout()" class="top-header-actions-logout ">
+                <i class="fas fa-sign-out-alt"></i>
+                <span>Logout</span>
+            </a>
+        </div>
+    </header>
+    
+    <aside class="sidebar">
+        <div class="nav-side-menu">
+            <i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
+            
+            <div class="sidebar-user">
+            </div>
+            
+            <div class="menu-list">                
+                <ul id="menu-content" class="menu-content collapse out">
+                                                            
+                    <a routerLink="Veiculos">
+                        <li class="sidebar-link">
+                            <i class="fas fa-users sidebar-link-icon"></i>
+                            <span class="sidebar-link">Veiculos</span>
+                        </li>
+                    </a>
+                    
+                    <li class="sidebar-dropdown">
+                        <span class="sidebar-link" data-toggle="collapse" data-target="#sidebar-menu-1">
+                            <i class="sidebar-icon fas fa-cog"></i>
+                            Configurações
+                        </span>
+                        <ul id="sidebar-menu-1" class="sidebar-submenu collapse">
+                            <li>
+                                <a routerLink="veiculos" class="sidebar-submenu-link">
+                                    Veiculos
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+        
+                </ul>
+            </div>
+        </div>
+    </aside>
+    </div>
+    <main>
+        <router-outlet></router-outlet>
+    </main>
+</span>

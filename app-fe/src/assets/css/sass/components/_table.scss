@@ -1,0 +1,26 @@
+td {
+    padding: 0 24px;
+}
+
+.table {
+
+    .td-name {
+        width: 25%;
+    }
+    
+    &-action-buttons {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        width: 100%;
+    }
+    
+    &-action-buttons-indicadores {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        width: 100%;
+        float: right;
+    }
+    
+}

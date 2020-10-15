@@ -1,0 +1,135 @@
+<div class="card">
+    <button (click)="newRegister()" class="button button-green btn-new">
+        <i class="fas fa-plus"></i>
+        Novo
+    </button>
+    <div class="card-body">
+        <message type="danger" *ngIf="errorMessage">
+            {{errorMessage}}
+        </message>
+        <message type="info" *ngIf="loading">
+            Carregando...
+        </message>
+        <div class="row u-align-bottom" *ngIf="hasFilter">
+            <ng-content></ng-content>
+        </div>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-hover table-striped">
+            <tr>
+                <th *ngFor="let label of labelsList">
+                    {{label}}
+                </th>
+                <th></th>
+            </tr>
+            <tr *ngFor="let value of values | paginate: { itemsPerPage: 10, currentPage: page };">
+                <td *ngFor="let field of fieldsList; index as i">
+                    <span *ngIf="masksList.length == 0">{{value[field]}}</span>
+                    <span *ngIf="masksList.length > 0">
+                        <span *ngIf="masksList[i] == ''">{{value[field]}}</span>
+                        <span *ngIf="masksList[i] == 'cpf'">
+                            {{value[field] | mask: '000.000.000-00'}}
+                        </span>
+                        <span *ngIf="masksList[i] == 'cep'">
+                            {{value[field] | mask: '00000-000'}}
+                        </span>
+                        <span *ngIf="masksList[i] == 'telefone9digitos'">
+                            {{value[field] | mask: '(00) 00000-0000'}}
+                        </span>
+                        <span *ngIf="masksList[i] == 'telefone8digitos'">
+                            {{value[field] | mask: '(00) 0000-0000'}}
+                        </span>
+                        <span *ngIf="masksList[i] == 'Ativo'">
+                            <label *ngIf="value[field].toString() == 'true'">Ativo</label>
+                            <label *ngIf="value[field].toString() == 'false'">Inativo</label>
+                        </span>
+                        <span *ngIf="masksList[i] == 'moeda'">
+                            {{value[field] | currency: 'BRL'}}
+                        </span>
+                    </span>
+                    <span *ngIf="masksList[i] == 'Data'">
+                        <label
+                            *ngIf="value[field] != '1970-01-01T00:00:00'">{{value[field] | date:'dd/MM/yyyy'}}</label>
+                    </span>
+                    <span *ngIf="masksList[i] == 'veiculoId.codProjAenv'">
+                        {{value['veiculoId']['codProjAenv']}}
+                    </span>
+                    <span *ngIf="masksList[i] == 'veiculoId.codModlAenv'">
+                        {{value['veiculoId']['codModlAenv']}}
+                    </span>
+                    <span *ngIf="masksList[i] == 'veiculoId.sglPubl'">
+                        {{value['veiculoId']['sglPubl']}}
+                    </span>
+                    <span *ngIf="masksList[i] == 'veiculoId.codCapA100'">
+                        {{value['veiculoId']['codCapA100']}}
+                    </span>
+                    <span *ngIf="masksList[i] == 'veiculoId.codSucpA100'">
+                        {{value['veiculoId']['codSucpA100']}}
+                    </span>
+                    <span *ngIf="masksList[i] == 'veiculoId.codSsecA100'">
+                        {{value['veiculoId']['codSsecA100']}}
+                    </span>
+                    <span *ngIf="masksList[i] == 'veiculoId.numFig'">
+                        {{value['veiculoId']['numFig']}}
+                    </span>
+                    <span *ngIf="masksList[i] == 'veiculoId.codVarFig'">
+                        {{value['veiculoId']['codVarFig']}}
+                    </span>
+                    <span *ngIf="masksList[i] == 'veiculoId.codIlst'">
+                        {{value['veiculoId']['codIlst']}}
+                    </span>
+                </td>
+                <td class="action-buttons">
+
+                    <span *ngIf="apiRoute == 'veiculos'">
+
+                        <button (click)="previewModel(value.veiculoId)" class=" btn btn-default btn-circle">
+                            <i class="fas fa-search"></i>
+                        </button>
+
+                        <button (click)="editModel(value.veiculoId)" class=" btn btn-default btn-circle">
+                            <i class="fas fa-pen"></i>
+                        </button>
+
+                        <button
+                            (click)="openModalConfirmationDeleteModel(confirmaExclusao, 0, '/compkey/' + value.veiculoId.codProjAenv + '/' + value.veiculoId.codModlAenv + '/' + value.veiculoId.sglPubl + '/' + value.veiculoId.codCapA100 + '/' + value.veiculoId.codSucpA100 + '/' + value.veiculoId.codSsecA100 + '/' + value.veiculoId.numFig + '/' + value.veiculoId.codVarFig + '/' + value.veiculoId.codIlst + '/')"
+                            class=" btn btn-default btn-circle">
+                            <i class="fas fa-trash"></i>
+                        </button>
+
+                    </span>
+
+                    <span *ngIf="apiRoute != 'veiculos'">
+
+                        <button (click)="preview(value.id)" class=" btn btn-default btn-circle">
+                            <i class="fas fa-search"></i>
+                        </button>
+
+                        <button (click)="edit(value.id)" class=" btn btn-default btn-circle">
+                            <i class="fas fa-pen"></i>
+                        </button>
+
+                        <button (click)="openModalConfirmationDelete(confirmaExclusao, value.id)"
+                            class=" btn btn-default btn-circle">
+                            <i class="fas fa-trash"></i>
+                        </button>
+
+                    </span>
+                </td>
+            </tr>
+        </table>
+        <div style="text-align: center">
+            <pagination-controls (pageChange)="page = $event" previousLabel="Anterior" nextLabel="Próxima">
+            </pagination-controls>
+        </div>
+    </div>
+</div>
+
+
+<ng-template #confirmaExclusao>
+    <div class="modal-body text-center">
+        <p>Confirma a exclusão do registro?</p>
+        <button type="button" class="btn btn-default" (click)="confirmDelete()">Sim</button>
+        <button type="button" class="btn btn-primary" (click)="declineDelete()">Não</button>
+    </div>
+</ng-template>

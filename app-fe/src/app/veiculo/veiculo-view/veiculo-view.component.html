@@ -1,0 +1,52 @@
+<span class="page-titles">Visualização do Veiculo</span>
+<div class="card">
+  <div class="card-body">
+
+    <div class="row">
+      <div class="form-group col-lg-3">
+        <b>Veiculo:</b> <br> {{model['Veiculo']}}
+      </div>
+
+      <div class="form-group col-lg-3">
+        <b>Marca:</b> <br> {{model['Marca']}}
+      </div>
+
+      <div class="form-group col-lg-3">
+        <b>Ano:</b> <br> {{model['Ano']}}
+      </div>
+
+    </div>
+
+    <div class="row">
+
+      <div class="form-group col-lg-3">
+        <b>Descrição:</b> <br> {{model['Descricao']}}
+      </div>
+
+      <div class="form-group col-lg-3">
+        <b>Vendido:</b> <br> {{model['Vendido']}}
+      </div>
+
+    </div>
+
+    <div class="row">
+
+      <div class="form-group col-lg-4">
+        <b>Created:</b> <br> {{model['Created'] | date:'dd/MM/yyyy'}}
+      </div>
+
+    </div>
+
+    <div class="row">
+
+      <div class="form-group col-lg-4">
+        <b>Updated:</b> <br> {{model['Updated'] | date:'dd/MM/yyyy'}}
+      </div>
+
+    </div>
+
+    <a routerLink="/veiculos" class="btn btn-info">Voltar</a>
+
+  </div>
+
+</div>

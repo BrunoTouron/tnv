@@ -1,0 +1,62 @@
+<span class="page-titles">Veiculo</span>
+<div class="card">
+  <div class="card-body">
+
+    <form [formGroup]="formCadastro" (ngSubmit)="save()">
+
+      <message type="danger" *ngIf="errorMessage">
+        {{errorMessage}}
+      </message>
+
+      <div class="row">
+
+        <div class="form-group col-lg-3">
+          <label for="veiculo">Veiculo:</label>
+          <input formControlName="veiculo" name="veiculo" type="text" class="form-control" >
+          <message type="danger" *ngIf="formCadastro.controls.veiculo.invalid && showMessages">
+            Campo obrigatório
+          </message>
+        </div>
+
+        <div class="form-group col-lg-3">
+          <label for="marca">Marca:</label>
+          <input formControlName="marca" name="marca" type="text" class="form-control" >
+          <message type="danger" *ngIf="formCadastro.controls.marca.invalid && showMessages">
+            Campo obrigatório
+          </message>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="form-group col-lg-3">
+          <label for="ano">Ano:</label>
+          <input formControlName="ano" name="ano" type="number" class="form-control">
+        </div>
+
+        <div class="form-group col-lg-1">
+          <label for="vendido">Vendido:</label>
+          <br />
+          <input
+            formControlName="vendido"
+            name="vendido"
+            type="checkbox"
+            selected="model.vendido"
+          />
+        </div>
+
+      </div>
+
+      <div class="row">
+
+        <div class="form-group col-lg-8">
+          <label for="descricao">Descricao:</label>
+          <input formControlName="descricao" name="descricao" type="text" class="form-control" >
+        </div>
+
+      </div>
+
+      <a routerLink="/veiculos" class="btn btn-danger">Cancelar</a> &nbsp;
+      <button class="btn btn-primary" type="submit">Salvar</button>
+    </form>
+  </div>
+</div>

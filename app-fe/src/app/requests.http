@@ -1,0 +1,22 @@
+http://localhost:8080/veiculos
+
+###
+GET http://localhost:8080/veiculos/compkey/0196/%20%20/AIPC/25/81/3/07%20%20/2/em170e2aipc-25-01047%20%20%20%20%20
+
+###
+GET http://localhost:8080/veiculos/compkey
+content-type: application/json
+
+ {
+    "codProjAenv": "0196",
+    "codModlAenv": "  ",
+    "sglPubl": "AIPC",
+    "codCapA100": 25,
+    "codSucpA100": 81,
+    "codSsecA100": 3,
+    "numFig": "07  ",
+    "codVarFig": 2,
+    "codIlst": "em170e2aipc-25-01047     "
+}
+
+###
